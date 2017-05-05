@@ -2,14 +2,17 @@ var flavors = ["vanilla", "butterscotch", "lavender", "chokolate", "cookie dough
 flavors[3] = "vanila chokolate chip";
 var flavorOfTheDay = flavors[3];
 var numFlovor = flavors.length;
+var numEndFlovor = flavors.length - 1;
+document.write(numEndFlovor);
+document.write('<br>Последний элемент массива:' + flavors[numEndFlovor]);
 document.write(flavorOfTheDay);
 document.write('<br>Сколько элементов в массиве: ' + numFlovor);
 
 
 function makePhrases() {
-    var words1 = ["24/7", "multi-tier", "30,000 foot", "B-to-B", "win-win"];
-    var words2 = ["empowered", "value-added", "oriented", "focused", "aligned"];
-    var words3 = ["process", "solution", "tipping-point", "strategy", "vision"];
+    var words1 = ["Человек", "Слон", "Лев", "Носорог", "Петух"];
+    var words2 = ["Богатый", "большой", "Волосаты", "Злой", "ушасты"];
+    var words3 = ["бритый", "облезлый", "тупой", "умный", "застенчивы"];
 
     var rand1 = Math.floor(Math.random() * words1.length);
     var rand2 = Math.floor(Math.random() * words2.length);
