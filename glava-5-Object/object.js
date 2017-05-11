@@ -3,10 +3,24 @@ var chevy = {
     make: "Chevy",
     model: "Bel Air",
     year: 1957,
-    color: "red",
+    color: "Красный",
     passengers: 2,
     convertible: false,
-    mileage: 1021
+    mileage: 2021
 };
+function buyIt() {
+    document.write('хрю, покупаю');
+}
+function noBuyIt() {
+    document.write('хрю, не покупаю');
+}
 
-document.write(chevy.color);
+var miles = chevy.mileage;
+
+if (miles > 2000) {
+    buyIt();
+} else {
+    noBuyIt();
+}
+
+document.write('<br>Цвет машины: ' + chevy.color + '<br>');
