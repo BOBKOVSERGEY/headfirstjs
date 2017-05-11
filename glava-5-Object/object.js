@@ -8,3 +8,5 @@ var chevy = {
     convertible: false,
     mileage: 1021
 };
+
+document.write(chevy.color);
