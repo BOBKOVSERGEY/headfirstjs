@@ -15,6 +15,9 @@ function noBuyIt() {
     document.write('хрю, не покупаю');
 }
 
+// изменяем значение свойства
+chevy.mileage = 1000;
+
 var miles = chevy.mileage;
 
 if (miles > 2000) {
@@ -23,4 +26,7 @@ if (miles > 2000) {
     noBuyIt();
 }
 
-document.write('<br>Цвет машины: ' + chevy.color + '<br>');
+
+
+document.write('<br>Цвет машины: ' + chevy.color + '<br>' +
+               '<br>Пробег: ' + chevy.mileage + '<br>');
