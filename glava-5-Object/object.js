@@ -26,6 +26,8 @@ if (miles > 2000) {
     noBuyIt();
 }
 
+// удаление свойства объекта
+delete chevy.color;
 
 
 document.write('<br>Цвет машины: ' + chevy.color + '<br>' +
