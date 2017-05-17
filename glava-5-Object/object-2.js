@@ -13,6 +13,7 @@ var taxi = {
     }
 };
 
+// вызов метода drive объекта taxi
 taxi.drive();
 
 // функция
