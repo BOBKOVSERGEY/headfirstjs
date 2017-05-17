@@ -29,6 +29,6 @@ if (miles > 2000) {
 // удаление свойства объекта
 delete chevy.color;
 
-
+console.log(chevy);
 document.write('<br>Цвет машины: ' + chevy.color + '<br>' +
                '<br>Пробег: ' + chevy.mileage + '<br>');
