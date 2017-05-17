@@ -23,11 +23,15 @@ var fiat = {
 
     drive: function () {
         if (this.started) {
-            document.write("Zoom, zoom");
+            document.write("Zoom, zoom<br>");
         } else {
-            document.write('You need to start the engine first');
+            document.write('Вам необходимо завести машину, START<br>');
         }
     }
 }
 
+fiat.drive();
+fiat.start();
+fiat.drive();
+fiat.stop();
 fiat.drive();
