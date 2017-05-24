@@ -10,11 +10,16 @@ var fiat = {
     mileage: 88000,
     // свойство для хранения текущего состояния двигателя
     started: false,
+    fuel: 0,
 
     // методы
     // метод для запуска двигателя
     start: function () {
-        this.started = true;
+        if (this.fuel == 0) {
+            document.write('Заправьте автомобиль, бак пустой<br>')
+        } else {
+            this.started = true;
+        }
     },
     // метод для остановки двигателя
     stop: function () {
@@ -23,10 +28,20 @@ var fiat = {
 
     drive: function () {
         if (this.started) {
-            document.write("Zoom, zoom Fiat<br>");
+            if (this.fuel > 0) {
+                document.write(this.make + " " + this.model + " Поехал Zoom, zoom Fiat<br>");
+            } else {
+                document.write("Нет бензина Fiat<br>");
+                this.stop();
+            }
+
         } else {
             document.write('Вам необходимо завести машину, START<br>');
         }
+    },
+
+    addFuel: function (amount) {
+        this.fuel = this.fuel + amount;
     }
 }
 
@@ -93,11 +108,20 @@ var chevy = {
     }
 }
 
+/* перебираем все свойства объекта в цикле
 for (var prop in chevy) {
     document.write(prop + ": " + chevy[prop] + '<br>');
 }
+ */
+
 
 fiat.start();
+fiat.addFuel(2);
+fiat.start();
+fiat.drive();
+fiat.drive();
+fiat.drive();
+fiat.drive();
 fiat.drive();
 fiat.stop();
 
