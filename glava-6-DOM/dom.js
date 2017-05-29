@@ -10,7 +10,10 @@ var elGreenPlanet = document.getElementById('greenplanet');
 
 
 elGreenPlanet.setAttribute('class', 'redtext');
+var atclGreenPlanet = elGreenPlanet.getAttribute('class');
+console.log(atclGreenPlanet);
 elGreenPlanet.innerHTML = 'Что то новое';
+
 
 console.log(elGreenPlanet.textContent);
 
