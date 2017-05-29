@@ -9,7 +9,7 @@ window.onload = init();
 var elGreenPlanet = document.getElementById('greenplanet');
 
 
-
+elGreenPlanet.setAttribute('class', 'redtext');
 elGreenPlanet.innerHTML = 'Что то новое';
 
 console.log(elGreenPlanet.textContent);
