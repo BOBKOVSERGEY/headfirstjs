@@ -9,3 +9,9 @@ var phrase = 'the cat in the hat';
 
 var index = phrase.indexOf('cat');
 console.log(index);
+
+var data = 'name|phone|address';
+
+var val = data.substring(5,10);
+
+console.log(val);
