@@ -15,3 +15,16 @@ var data = 'name|phone|address';
 var val = data.substring(5,10);
 
 console.log(val);
+
+var vals = data.split('|');
+
+console.log(vals);
+
+for (var i = 0; i < vals.length; i++) {
+  document.write(vals[i] + '<br>');
+}
+
+var text = 'Купить пирог';
+
+var texti = text.replace('Купить', 'Buy')
+console.log(texti);
