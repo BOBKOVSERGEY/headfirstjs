@@ -34,9 +34,9 @@ var model = {
   shipsSunk: 0, // инициализирует значение 0 в начале игры
 
   ships: [
-    { locations: ["06", "16", "26"], hits: ["", "", ""] },
-    { locations: ["24", "34", "44"], hits: ["", "", ""] },
-    { locations: ["10", "11", "12"], hits: ["", "", ""] }
+    { locations: ["0", "0", "0"], hits: ["", "", ""] },
+    { locations: ["0", "0", "0"], hits: ["", "", ""] },
+    { locations: ["0", "0", "0"], hits: ["", "", ""] }
   ],
 
   // метод получения координаты выстрела
@@ -68,8 +68,60 @@ var model = {
       }
     }
     return true;
+  },
+
+  // создаем в цикле корабли
+  generateShipLocations: function () {
+    var locations;
+    for ( var i = 0; i < this.numShips; i++) {
+      do {
+        locations = this.generateShip();
+      } while (this.collision(locations));
+      this.ships[i].locations = locations;
+    }
+  },
+  generateShip: function () {
+    var direction = Math.floor(Math.random() * 2); // возвращает 0 или 1
+    var row, col;
+
+    if (direction === 1) {
+      // сгенирировать начальную позицию для горизонтального корабля
+      row = Math.floor(Math.random() * this.boardSize);
+      col = Math.floor(Math.random() * (this.boardSize - this.shipLength));
+    } else {
+      // сгенирировать начальную позицию для вертикального корабля
+      row = Math.floor(Math.random() * (this.boardSize - this.shipLength));
+      col = Math.floor(Math.random() * this.boardSize);
+    }
+
+    var newShipLocations = [];
+
+    for (var i = 0; i < this.shipLength; i++) {
+      if (direction === 1) {
+        // добавить в массив для горизонтального корабля
+        newShipLocations.push(row + "" + (col + i));
+      } else {
+        // добавить в массив позицию для вертикального корабля
+        newShipLocations.push((row + i) + "" + col);
+      }
+    }
+    return newShipLocations;
+  },
+
+  collision: function (locations) {
+    for (var i = 0; i < this.numShips; i++) {
+      var ship = model.ships[i];
+      for ( var j = 0; j < locations.length; j++) {
+        if (ship.locations.indexOf(locations[j]) >= 0) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }
+
+model.generateShip();
 /*
 model.fire("53");
 
@@ -102,6 +154,7 @@ function parseGuess(guess) {
       return row + column;
     }
   }
+  return null;
 }
 var controller = {
   guesses: 0,
@@ -118,6 +171,7 @@ var controller = {
   }
 }
 
+/*
 controller.processGuess("A0"); // miss
 
 controller.processGuess("A6"); // hit
@@ -131,3 +185,23 @@ controller.processGuess("E4"); // hit
 controller.processGuess("B0"); // hit
 controller.processGuess("B1"); // hit
 controller.processGuess("B2"); // hit
+*/
+
+// получение координат от формы и передача их контроллеру
+function handleFireButton() {
+  var guessInput = document.getElementById("guessInput"); // выборка интпута
+  var guess = guessInput.value;
+  controller.processGuess(guess);
+  guessInput.value = ""; // удаляем содержимое выстрела
+}
+
+function init() {
+  var fireButton = document.getElementById("fireButton");
+  fireButton.onclick = handleFireButton;
+
+  model.generateShipLocations();
+}
+
+window.onload = init; // Когда страница загружена выполни инициализируй функцию
+
+
