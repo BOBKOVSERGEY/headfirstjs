@@ -50,3 +50,21 @@ var counter = makeCounterTwo();
 console.log(counter.increment());
 console.log(counter.increment());
 console.log(counter.increment());
+
+function makeTimer(doneMessage, n) {
+  console.log(doneMessage);
+  setTimeout(function () {
+    alert(doneMessage)
+  }, n);
+}
+
+//makeTimer("I am Programmer!", 3000);
+
+function setTimer(doneMessage, n) {
+  console.log(doneMessage);
+  setTimeout(function () {
+    alert(doneMessage);
+  }, n);
+  doneMessage = "OUCH";
+}
+setTimer("Cookies are done!", 1000);
